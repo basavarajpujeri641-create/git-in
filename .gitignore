@@ -1,1 +1,3 @@
 readers.jsonl
+node_modules/
+.env*
