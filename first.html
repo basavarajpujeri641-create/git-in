@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            color: #26324b;
+            background: linear-gradient(135deg, #fff4d6, #f3e8ff 55%, #dff7f2);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+            color: #6338a5;
+            font-size: clamp(2.2rem, 6vw, 3.4rem);
+        }
+
+        h2 {
+            margin-top: 28px;
+            color: #087e8b;
+        }
+
+        body > p:first-of-type {
+            padding: 18px 20px;
+            border-left: 5px solid #f2a541;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 5px 18px #26324b12;
+        }
+
+        ul {
+            display: grid;
+            gap: 12px;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            padding: 14px 18px;
+            border: 1px solid #e3d8f5;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 12px #26324b0d;
+        }
+
+        li strong {
+            color: #6338a5;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: 0;
+            border-radius: 8px;
+            color: #fff;
+            background: #6338a5;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 150ms ease, transform 150ms ease;
+        }
+
+        button:hover:not(:disabled) {
+            background: #48247f;
+            transform: translateY(-1px);
+        }
+
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid #f2a541;
+            outline-offset: 3px;
+        }
+
+        button:disabled {
+            background: #228b72;
+            cursor: default;
+        }
+
+        button[type="reset"] {
+            background: #087e8b;
+        }
+
+        button[type="reset"]:hover {
+            background: #06636d;
+        }
+
+        #reader-form {
+            display: grid;
+            gap: 10px;
+            margin-top: 24px;
+            padding: 22px;
+            border: 1px solid #ccebe4;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 6px 20px #26324b12;
+        }
+
+        #reader-form[hidden] {
+            display: none;
+        }
+
+        #reader-form h2 {
+            margin: 0 0 4px;
+            color: #087e8b;
+        }
+
+        #contact-details {
+            margin-top: 18px;
+            padding: 18px 22px;
+            border: 1px solid #e3d8f5;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 6px 20px #26324b12;
+        }
+
+        #contact-details[hidden] {
+            display: none;
+        }
+
+        #contact-details h2 {
+            margin: 0 0 8px;
+        }
+
+        #contact-details p {
+            margin: 6px 0;
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 8px;
+            padding: 10px 12px;
+            border: 1px solid #b9c5d8;
+            border-radius: 7px;
+            font: inherit;
+        }
+
+        #completion-status {
+            color: #087e8b;
+            font-weight: 600;
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Git practice</h1>
+    <h2>Introduction to Git</h2>
+    <h2>What is Git?</h2>
+    <p>Git is a distributed version control system that allows developers to track changes in their codebase, collaborate with others, and manage different versions of their projects. It was created by Linus Torvalds in 2005 and has since become one of the most popular version control systems in the software development industry.</p>
+    <h2>Key Features of Git</h2>
+    <ul>
+        <li><strong>Distributed version control:</strong> Every developer has a complete copy of the repository and its history, so they can work offline.</li>
+        <li><strong>Branching and merging:</strong> Create independent branches to develop features or fixes, then merge them back into the main project.</li>
+        <li><strong>Fast and efficient:</strong> Most Git operations run locally, making it quick to inspect history, compare changes, and switch branches.</li>
+        <li><strong>Data integrity:</strong> Git uses cryptographic hashes to identify content and help detect unexpected changes.</li>
+        <li><strong>Staging area:</strong> Choose exactly which changes to include in each commit.</li>
+        <li><strong>Collaboration:</strong> Share changes through remote repositories and review contributions from other developers.</li>
+    </ul>
+    <button type="button" id="complete-button">Mark as completed</button>
+    <button type="button" id="contact-button" aria-expanded="false" aria-controls="contact-details">Contact me</button>
+    <section id="contact-details" aria-labelledby="contact-heading" hidden>
+        <h2 id="contact-heading">Contact details</h2>
+        <p><strong>Name:</strong> Basavaraj Pujeri</p>
+        <p><strong>Email:</strong> <a href="mailto:basavarajpujeri@gmail.com">basavarajpujeri@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:1234567890">1234567890</a></p>
+    </section>
+    <form id="reader-form" hidden>
+        <h2>Reader details</h2>
+        <label for="reader-name">Name</label>
+        <input type="text" id="reader-name" name="name" autocomplete="name" required>
+
+        <label for="reader-email">Email</label>
+        <input type="email" id="reader-email" name="email" autocomplete="email" required>
+
+        <label for="reader-phone">Phone number</label>
+        <input type="tel" id="reader-phone" name="phone" autocomplete="tel" required>
+
+        <button type="submit" id="submit-button">Submit</button>
+        <button type="reset">Reset details</button>
+    </form>
+    <p id="completion-status" role="status" aria-live="polite"></p>
+
+    <script>
+        const completeButton = document.getElementById("complete-button");
+        const contactButton = document.getElementById("contact-button");
+        const contactDetails = document.getElementById("contact-details");
+        const readerForm = document.getElementById("reader-form");
+        const completionStatus = document.getElementById("completion-status");
+        const submitButton = document.getElementById("submit-button");
+
+        contactButton.addEventListener("click", () => {
+            contactDetails.hidden = !contactDetails.hidden;
+            contactButton.setAttribute("aria-expanded", String(!contactDetails.hidden));
+        });
+
+        completeButton.addEventListener("click", () => {
+            readerForm.hidden = false;
+            document.getElementById("reader-name").focus();
+            completionStatus.textContent = "Introduction completed. Please enter your details.";
+        });
+
+        readerForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            alert("You are submitting");
+            submitButton.disabled = true;
+            completionStatus.textContent = "Submitting your details...";
+
+            try {
+                const response = await fetch("/api/readers", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(Object.fromEntries(new FormData(readerForm)))
+                });
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || "Unable to save your details.");
+                }
+
+                completionStatus.textContent = "Thank you. Your details have been saved.";
+                readerForm.reset();
+                readerForm.hidden = true;
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            } catch (error) {
+                completionStatus.textContent = error.message || "Unable to connect to the server. Please try again.";
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
